@@ -22,8 +22,8 @@ use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 class showCoords extends PluginBase implements Listener {
 
     public function onEnable() : void {
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-	}
+	$this->getServer()->getPluginManager()->registerEvents($this, $this);
+    }
 	
 	
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
