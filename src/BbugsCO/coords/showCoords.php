@@ -15,7 +15,6 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\event\Listener;
-use pocketmine\scheduler\TaskHandler;
 use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 
 
