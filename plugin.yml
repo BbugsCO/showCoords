@@ -5,7 +5,9 @@ author: BbugsCO
 main: BbugsCO\coords\showCoords
 description: Display Coordinates
 api:
-- 1.0.0
+- 3.0.0
+mcpe-protocol:
+- 448
 commands:
   coords:
     description: Show your coordinates
