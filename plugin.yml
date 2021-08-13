@@ -12,7 +12,7 @@ commands:
   coords:
     description: Show your coordinates
     permission: coords
-    usage: /coords
+    usage: /coords [on/off]
 permissions:
   coords.command:
     default: op
