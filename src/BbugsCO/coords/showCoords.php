@@ -11,6 +11,7 @@ use pocketmine\Server;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\plugin\PluginManager;
+use pocketmine\plugin\Plugin;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
@@ -22,12 +23,13 @@ use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 class showCoords extends PluginBase implements Listener {
 
     public function onEnable() : void {
-	$this->getServer()->getPluginManager()->registerEvents($this, $this);
-    }
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+	}
 	
 	
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
 		if($command->getName() === "coords"){
+			
 			if(!$sender->hasPermission("coords.command")){
 				$sender->sendMessage("You can not run this command because you do not have permission");
 				return false;
@@ -37,10 +39,27 @@ class showCoords extends PluginBase implements Listener {
 				return false;
 			}
 			
-			$pk = new GameRulesChangedPacket();
-                        $pk->gameRules = ["showcoordinates" => [1, true, true]];
+			if (count($args) < 1) {
+				$sender->sendMessage("no arguements");
+				return false;
+			}
+			if (isset($args[0])) {
+               		switch ($args[0]) {
+
+			case "on":
+		 	$pk = new GameRulesChangedPacket();
+     		        $pk->gameRules = ["showcoordinates" => [1, true, true]];
 			$sender->dataPacket($pk);
-                        $sender->sendMessage("Coords enabled");
+        	 	$sender->sendMessage("Coords enabled");
+			return true;
+			
+			case "off":
+			$pk = new GameRulesChangedPacket();
+         		$pk->gameRules = ["showcoordinates" => [1, false, false]];
+			$sender->dataPacket($pk);
+         		$sender->sendMessage("Coords disabled");
+				}
+			}
 		}
 		return true;
 	}
