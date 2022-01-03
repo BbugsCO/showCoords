@@ -1,20 +1,21 @@
 ---
 name: coords
-version: 1.0.0
+version: 1.1.0
 author: BbugsCO
-main: BbugsCO\coords\showCoords
+main: showCoords\showCoords
+src-namespace-prefix: showCoords
 description: Display Coordinates
-api:
-- 3.0.0
+api: [4.0.0]
 mcpe-protocol:
-- 448
+- 475
+load: STARTUP
 commands:
   coords:
     description: Show your coordinates
     permission: coords
     usage: /coords [on/off]
 permissions:
-  coords.command:
+  coords:
     default: op
     description: perm to use coords
 ...
