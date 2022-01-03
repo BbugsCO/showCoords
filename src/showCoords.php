@@ -50,16 +50,16 @@ class showCoords extends PluginBase implements Listener {
 
 			case "on":
 		 	$pk = new GameRulesChangedPacket();
-     		$pk->gameRules = ["showcoordinates" => [1, true, true]];
+     			$pk->gameRules = ["showcoordinates" => [1, true, true]];
 			$sender->dataPacket($pk);
-        	$sender->sendMessage("Coords enabled");
+        		$sender->sendMessage("Coords enabled");
 			return true;
 			
 			case "off":
 			$pk = new GameRulesChangedPacket();
-         	$pk->gameRules = ["showcoordinates" => [1, false, false]];
+         		$pk->gameRules = ["showcoordinates" => [1, false, false]];
 			$sender->dataPacket($pk);
-         	$sender->sendMessage("Coords disabled");
+         		$sender->sendMessage("Coords disabled");
 				}
 			}
 		}
